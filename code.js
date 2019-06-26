@@ -14,7 +14,9 @@ var app = new Vue ({
                 category: "clothing",
                 date: "today",
                 image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah"
+                text: "lorem ipsum blah blah blah blah blah blah blah",
+                likes: 0,
+                shares: 0
             },
             {
                 title: "first post",
@@ -22,7 +24,9 @@ var app = new Vue ({
                 category: "clothing",
                 date: "today",
                 image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah"
+                text: "lorem ipsum blah blah blah blah blah blah blah",
+                likes: 0,
+                shares: 0
             },
             {
                 title: "first post",
@@ -30,7 +34,9 @@ var app = new Vue ({
                 category: "clothing",
                 date: "today",
                 image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah"
+                text: "lorem ipsum blah blah blah blah blah blah blah",
+                likes: 0,
+                shares: 0
             },
             {
                 title: "first post",
@@ -38,7 +44,9 @@ var app = new Vue ({
                 category: "clothing",
                 date: "today",
                 image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah"
+                text: "lorem ipsum blah blah blah blah blah blah blah",
+                likes: 0,
+                shares: 0
             },
             {
                 title: "first post",
@@ -46,7 +54,9 @@ var app = new Vue ({
                 category: "clothing",
                 date: "today",
                 image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah"
+                text: "lorem ipsum blah blah blah blah blah blah blah",
+                likes: 0,
+                shares: 0
             },
         ],
         categories: [
@@ -78,6 +88,7 @@ var app = new Vue ({
                 date: new Date(),
                 image: this.new_image,
                 text: this.new_text,
+                likes: 0,
             };
             this.posts.unshift(new_post);
             this.new_title= "";
