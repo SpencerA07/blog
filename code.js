@@ -7,58 +7,6 @@ var app = new Vue ({
         greeting: "Collectors Blog",
         page: "",
         drawer: false,
-        posts: [
-            {
-                title: "first post",
-                author: "mr. stock",
-                category: "clothing",
-                date: "today",
-                image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah",
-                likes: 0,
-                shares: 0
-            },
-            {
-                title: "first post",
-                author: "mr. stock",
-                category: "clothing",
-                date: "today",
-                image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah",
-                likes: 0,
-                shares: 0
-            },
-            {
-                title: "first post",
-                author: "mr. stock",
-                category: "clothing",
-                date: "today",
-                image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah",
-                likes: 0,
-                shares: 0
-            },
-            {
-                title: "first post",
-                author: "mr. stock",
-                category: "clothing",
-                date: "today",
-                image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah",
-                likes: 0,
-                shares: 0
-            },
-            {
-                title: "first post",
-                author: "mr. stock",
-                category: "clothing",
-                date: "today",
-                image: "https://i.imgur.com/huwV4cW.jpg",
-                text: "lorem ipsum blah blah blah blah blah blah blah",
-                likes: 0,
-                shares: 0
-            },
-        ],
         categories: [
             "all",
             "clothing",
@@ -72,6 +20,7 @@ var app = new Vue ({
             "misc"
         ],
         selected_category: "all",
+        posts: [ ],
         new_title: "",
         new_author: "",
         new_category: "all",
@@ -79,16 +28,29 @@ var app = new Vue ({
         new_text: "",
     },
 
+    created: function () {
+        this.getPosts();
+    },
+
     methods: {
+        getPosts: function () {
+            fetch("http://localhost:3000/posts").then( function ( res ) {
+                res.json( ).then( function ( data ) {
+                    console.log( data );
+                    app.post = data.posts;
+                })
+            });
+        },
+
         addPost: function () {
+            var date = new Date();
             var new_post = {
                 title: this.new_title,
                 author: this.new_author,
                 category: this.new_category,
-                date: new Date(),
+                date: date.toString(),
                 image: this.new_image,
                 text: this.new_text,
-                likes: 0,
             };
             this.posts.unshift(new_post);
             this.new_title= "";
