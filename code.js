@@ -4,7 +4,9 @@ var app = new Vue ({
     el: "#app",
 
     data: {
-        page: "blog",
+        greeting: "Collectors Blog",
+        page: "",
+        drawer: false,
         posts: [
             {
                 title: "first post",
@@ -60,6 +62,31 @@ var app = new Vue ({
             "misc"
         ],
         selected_category: "all",
+        new_title: "",
+        new_author: "",
+        new_category: "all",
+        new_image: "",
+        new_text: "",
+    },
+
+    methods: {
+        addPost: function () {
+            var new_post = {
+                title: this.new_title,
+                author: this.new_author,
+                category: this.new_category,
+                date: new Date(),
+                image: this.new_image,
+                text: this.new_text,
+            };
+            this.posts.unshift(new_post);
+            this.new_title= "";
+            this.new_author="";
+            this.new_category="all";
+            this.new_image="";
+            this.new_text="";
+            this.page="blog";
+        },
     },
 
     computed: {
