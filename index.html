@@ -20,13 +20,15 @@
                 <img v-bind:src="post.image" width="300px" height="300px">
                 <div>{{ post.title }}</div>
                 <div>{{ post.author }}</div>
+                <div>{{ post.category }}</div>
                 <div>{{ post.text }}</div>
                 <div>{{ post.date }}</div>
             </div>
         </div>
 
         <div v-if="page == 'post'">
-            POST PAGE
+            <div>Create Post</div>
+            Enter Title: <input type="text">
         </div>
     </div>
 
