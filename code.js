@@ -79,6 +79,21 @@ var app = new Vue ({
             this.new_text="";
             this.page="blog";
         },
+
+        deletePost: function (post) {
+            fetch(`${this.serverUrl}/posts/${post._id}`, {
+                method: "DELETE"
+            }).then( function ( response ) {
+                if ( response.status == 204 ) {
+                    console.log("It worked");
+                    app.getPosts();
+                } else if ( response.status == 400 ) {
+                    response.json().then( function ( data ) {
+                        alert(data.msg);
+                    })
+                }
+            })
+        },
     },
 
     computed: {
