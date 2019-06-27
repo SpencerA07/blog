@@ -26,7 +26,9 @@ var app = new Vue ({
         new_category: "all",
         new_image: "",
         new_text: "",
+        serverUrl: "https://blog-server-codeschool.herokuapp.com/",
     },
+    
 
     created: function () {
         this.getPosts();
@@ -34,7 +36,7 @@ var app = new Vue ({
 
     methods: {
         getPosts: function () {
-            fetch("http://localhost:3000/posts").then( function ( res ) {
+            fetch( this.serverUrl + "/posts").then( function ( res ) {
                 res.json( ).then( function ( data ) {
                     console.log( data );
                     app.post = data.posts;
@@ -52,6 +54,23 @@ var app = new Vue ({
                 image: this.new_image,
                 text: this.new_text,
             };
+
+            fetch( this.serverUrl + "/posts", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify( new_post )
+            }).then( function ( res ) {
+                if ( res.status == 400 ) {
+                    res.json( ).then( function ( data ) {
+                        alert( data.msg );
+                    })
+                } else if ( res.status == 201 ) {
+                    console.log( "Added" );
+                    app.getPosts();
+                }
+            })
             this.posts.unshift(new_post);
             this.new_title= "";
             this.new_author="";
