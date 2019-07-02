@@ -31,7 +31,7 @@ var app = new Vue ({
     
 
     created: function () {
-        app.getPosts();
+        this.getPosts();
     },
 
     methods: {
