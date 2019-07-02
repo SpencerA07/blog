@@ -39,7 +39,7 @@ var app = new Vue ({
             fetch( this.serverUrl + "/posts").then( function ( res ) {
                 res.json( ).then( function ( data ) {
                     console.log( data );
-                    app.post = data.posts;
+                    app.posts = data.posts;
                 })
             });
         },
