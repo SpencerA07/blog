@@ -26,7 +26,7 @@ var app = new Vue ({
         new_category: "all",
         new_image: "",
         new_text: "",
-        serverUrl: "https://blog-server-codeschool.herokuapp.com/",
+        serverUrl: "https://blog-server-codeschool.herokuapp.com",
     },
     
 
